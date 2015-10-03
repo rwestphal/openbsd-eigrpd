@@ -45,8 +45,6 @@
 #define	RT_BUF_SIZE		16384
 #define	MAX_RTSOCK_BUF		128 * 1024
 
-#define RTP_EIGRP		28	/* XXX move to sys/net/route.h */
-
 #define	F_EIGRPD_INSERTED	0x0001
 #define	F_KERNEL		0x0002
 #define	F_CONNECTED		0x0004
