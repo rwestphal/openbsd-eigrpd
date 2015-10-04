@@ -62,7 +62,7 @@ send_update(struct eigrp_iface *ei, struct nbr *nbr, uint32_t flags,
 			size = sizeof(struct ip6_hdr);
 			break;
 		default:
-			break;
+			fatalx("send_update: unknown af");
 		}
 		size += sizeof(struct eigrp_hdr);
 

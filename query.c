@@ -66,7 +66,7 @@ send_query(struct eigrp_iface *ei, struct nbr *nbr,
 			size = sizeof(struct ip6_hdr);
 			break;
 		default:
-			break;
+			fatalx("send_query: unknown af");
 		}
 		size += sizeof(struct eigrp_hdr);
 

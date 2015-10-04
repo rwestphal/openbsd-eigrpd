@@ -168,8 +168,7 @@ rt_compare(struct rt_node *a, struct rt_node *b)
 			return (1);
 		break;
 	default:
-		log_debug("%s: unexpected address-family", __func__);
-		break;
+		fatalx("rt_compare: unknown af");
 	}
 
 	if (a->prefixlen < b->prefixlen)

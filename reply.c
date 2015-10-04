@@ -65,7 +65,7 @@ send_reply(struct nbr *nbr, struct rinfo_head *rinfo_list, int siareply)
 			size = sizeof(struct ip6_hdr);
 			break;
 		default:
-			break;
+			fatalx("send_reply: unknown af");
 		}
 		size += sizeof(struct eigrp_hdr);
 

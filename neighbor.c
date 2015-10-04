@@ -68,8 +68,7 @@ nbr_compare(struct nbr *a, struct nbr *b)
 			return (-1);
 		break;
 	default:
-		log_debug("%s: unexpected address-family", __func__);
-		break;
+		fatalx("nbr_compare: unknown af");
 	}
 
 	return (0);
