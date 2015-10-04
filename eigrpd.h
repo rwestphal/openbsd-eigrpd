@@ -251,6 +251,7 @@ struct eigrp {
 	int			 af;
 	uint16_t		 as;
 	uint8_t			 kvalues[6];
+	uint16_t		 active_timeout;
 	uint8_t			 maximum_hops;
 	uint8_t			 maximum_paths;
 	uint8_t			 variance;
