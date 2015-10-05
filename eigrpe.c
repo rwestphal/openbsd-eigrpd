@@ -533,6 +533,17 @@ eigrpe_dispatch_rde(int fd, short event, void *bula)
 				break;
 			}
 			break;
+		case IMSG_NEIGHBOR_DOWN:
+			nbr = nbr_find_peerid(imsg.hdr.peerid);
+			if (nbr == NULL) {
+				log_debug("%s: cannot find rde neighbor",
+				    __func__);
+				break;
+			}
+			/* announce that this neighborship is dead */
+			send_hello(nbr->ei, NULL, 0, 1);
+			nbr_del(nbr);
+			break;
 		case IMSG_CTL_SHOW_TOPOLOGY:
 		case IMSG_CTL_END:
 			control_imsg_relay(&imsg);

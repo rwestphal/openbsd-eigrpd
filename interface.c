@@ -431,7 +431,7 @@ eigrp_if_hello_timer(int fd, short event, void *arg)
 	struct eigrp_iface	*ei = arg;
 	struct timeval		 tv;
 
-	send_hello(ei, NULL, 0);
+	send_hello(ei, NULL, 0, 0);
 
 	/* reschedule hello_timer */
 	timerclear(&tv);
