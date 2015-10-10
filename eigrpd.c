@@ -275,6 +275,9 @@ main(int argc, char *argv[])
 	    eigrpd_conf->rdomain) == -1)
 		fatalx("kr_init failed");
 
+	if (pledge("stdio proc", NULL) == -1)
+		fatal("pledge");
+
 	event_dispatch();
 
 	eigrpd_shutdown();

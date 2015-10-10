@@ -107,6 +107,9 @@ rde(struct eigrpd_conf *xconf, int pipe_parent2rde[2], int pipe_eigrpe2rde[2],
 	    setresuid(pw->pw_uid, pw->pw_uid, pw->pw_uid))
 		fatal("can't drop privileges");
 
+	if (pledge("stdio", NULL) == -1)
+		fatal("pledge");
+
 	event_init();
 
 	/* setup signal handler */
