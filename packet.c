@@ -707,10 +707,13 @@ find_iface(unsigned int ifindex, int af, union eigrpd_addr *src)
 		 * addresses for the subnet as known to the local router."
 		 */
 		TAILQ_FOREACH(if_addr, &iface->addr_list, entry) {
-			mask = prefixlen2mask(if_addr->prefixlen);
-			if ((if_addr->addr.v4.s_addr & mask) ==
-			    (src->v4.s_addr & mask))
-				return (iface);
+			if (if_addr->af == AF_INET) {
+				mask = prefixlen2mask(if_addr->prefixlen);
+
+				if ((if_addr->addr.v4.s_addr & mask) ==
+				    (src->v4.s_addr & mask))
+					return (iface);
+			}
 		}
 		break;
 	case AF_INET6:
