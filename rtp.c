@@ -228,15 +228,14 @@ rtp_send_ack(struct nbr *nbr)
 		fatal("rtp_send_ack");
 
 	/* EIGRP header */
-	if (gen_eigrp_hdr(buf, EIGRP_OPC_HELLO, 0, 0, eigrp->as))
-		goto fail;
+	if (gen_eigrp_hdr(buf, EIGRP_OPC_HELLO, 0, 0, eigrp->as)) {
+		log_warnx("%s: failed to send message", __func__);
+		ibuf_free(buf);
+		return;
+	}
 
 	/* send unreliably */
 	send_packet(nbr->ei, nbr, 0, buf);
-	ibuf_free(buf);
-	return;
-fail:
-	log_warnx("%s: failed to send message", __func__);
 	ibuf_free(buf);
 }
 

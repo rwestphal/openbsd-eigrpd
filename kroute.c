@@ -1525,7 +1525,6 @@ rtmsg_process_route(struct rt_msghdr *rtm, struct sockaddr *rti_info[RTAX_MAX])
 		kr.flags |= F_DYNAMIC;
 	kr.priority = rtm->rtm_priority;
 
-
 	if (rtm->rtm_type == RTM_CHANGE) {
 		/*
 		 * The kernel doesn't allow RTM_CHANGE for multipath routes.

@@ -452,7 +452,7 @@ rde_dispatch_parent(int fd, short event, void *bula)
 void
 rde_instance_init(struct eigrp *eigrp)
 {
-	struct rde_nbr		nbr;
+	struct rde_nbr		 nbr;
 
 	memset(&nbr, 0, sizeof(nbr));
 	nbr.flags = F_RDE_NBR_SELF | F_RDE_NBR_REDIST;
