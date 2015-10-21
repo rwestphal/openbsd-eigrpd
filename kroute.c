@@ -1564,7 +1564,8 @@ rtmsg_process_route(struct rt_msghdr *rtm, struct sockaddr *rti_info[RTAX_MAX])
 	}
 
 	if (kr.priority == eigrpd_conf->fib_priority_internal ||
-	    kr.priority == eigrpd_conf->fib_priority_external) {
+	    kr.priority == eigrpd_conf->fib_priority_external ||
+	    kr.priority == eigrpd_conf->fib_priority_summary) {
 		log_warnx("alien EIGRP route %s/%d", log_addr(kr.af, &kr.prefix),
 		    kr.prefixlen);
 		return (send_rtmsg(kr_state.fd, RTM_DELETE, &kr));

@@ -373,6 +373,7 @@ eigrpe_dispatch_main(int fd, short event, void *bula)
 			TAILQ_INIT(&nei->nbr_list);
 			TAILQ_INIT(&nei->update_list);
 			TAILQ_INIT(&nei->query_list);
+			TAILQ_INIT(&nei->summary_list);
 			TAILQ_INSERT_TAIL(&niface->ei_list, nei, i_entry);
 			TAILQ_INSERT_TAIL(&neigrp->ei_list, nei, e_entry);
 			if (RB_INSERT(iface_id_head, &ifaces_by_id, nei) !=

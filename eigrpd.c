@@ -590,6 +590,7 @@ merge_config(struct eigrpd_conf *conf, struct eigrpd_conf *xconf)
 	conf->rdomain= xconf->rdomain;
 	conf->fib_priority_internal = xconf->fib_priority_internal;
 	conf->fib_priority_external = xconf->fib_priority_external;
+	conf->fib_priority_summary = xconf->fib_priority_summary;
 
 	/* merge instances */
 	TAILQ_FOREACH_SAFE(eigrp, &conf->instances, entry, etmp) {
