@@ -190,7 +190,7 @@ eigrpe(struct eigrpd_conf *xconf, int pipe_parent2eigrpe[2], int pipe_eigrpe2rde
 	TAILQ_FOREACH(iface, &econf->iface_list, entry)
 		if_init(xconf, iface);
 
-	if (pledge("stdio inet mcast", NULL) == -1)
+	if (pledge("stdio cpath inet mcast", NULL) == -1)
 		fatal("pledge");
 
 	event_dispatch();
