@@ -303,6 +303,7 @@ eigrpe_dispatch_main(int fd, short event, void *bula)
 			    IN6_IS_ADDR_LINKLOCAL(&ka->addr.v6)) {
 				memcpy(&iface->linklocal, &ka->addr.v6,
 				    sizeof(iface->linklocal));
+				if_update(iface, AF_INET6);
 				break;
 			}
 

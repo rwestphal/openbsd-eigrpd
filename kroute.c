@@ -198,10 +198,14 @@ kif_redistribute(void)
 	struct kif_node		*kif;
 	struct kif_addr		*ka;
 
-	RB_FOREACH(kif, kif_tree, &kit)
-		TAILQ_FOREACH(ka, &kif->addrs, entry)
+	RB_FOREACH(kif, kif_tree, &kit) {
+		main_imsg_compose_eigrpe(IMSG_IFINFO, 0, &kif->k,
+		    sizeof(struct kif));
+		TAILQ_FOREACH(ka, &kif->addrs, entry) {
 			main_imsg_compose_eigrpe(IMSG_NEWADDR, 0, &ka->a,
 			    sizeof(struct kaddr));
+		}
+	}
 }
 
 int
