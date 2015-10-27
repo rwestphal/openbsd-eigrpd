@@ -100,8 +100,10 @@ print_redistribute(struct eigrp *eigrp)
 			break;
 		}
 
-		if (r->metric)
+		if (r->metric) {
+			printf(" metric");
 			print_redist_metric(r->metric);
+		}
 		printf("\n");
 	}
 }
