@@ -1107,6 +1107,8 @@ send_rtmsg_v4(int fd, int action, struct kroute *kr)
 		hdr.rtm_fmask = RTF_REJECT|RTF_BLACKHOLE;
 	else
 		hdr.rtm_flags = RTF_MPATH;
+	if (kr->flags & F_BLACKHOLE)
+		hdr.rtm_flags |= RTF_BLACKHOLE;
 	hdr.rtm_seq = kr_state.rtseq++;	/* overflow doesn't matter */
 	hdr.rtm_msglen = sizeof(hdr);
 	/* adjust iovec */
