@@ -143,7 +143,7 @@ nbr_init(struct nbr *nbr)
 	memcpy(&rnbr.addr, &nbr->addr, sizeof(rnbr.addr));
 	rnbr.ifaceid = nbr->ei->ifaceid;
 	if (nbr->flags & F_EIGRP_NBR_SELF)
-		rnbr.flags = F_RDE_NBR_SELF;
+		rnbr.flags = F_RDE_NBR_SELF|F_RDE_NBR_LOCAL;
 
 	/* rde is not aware of pending nbrs */
 	eigrpe_imsg_compose_rde(IMSG_NEIGHBOR_UP, nbr->peerid, 0, &rnbr,
