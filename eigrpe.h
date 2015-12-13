@@ -85,6 +85,7 @@ void		 eigrpe_orig_local_route(struct eigrp_iface *,
     struct if_addr *, int);
 void		 eigrpe_iface_ctl(struct ctl_conn *, unsigned int);
 void		 eigrpe_nbr_ctl(struct ctl_conn *);
+void		 eigrpe_stats_ctl(struct ctl_conn *);
 
 /* interface.c */
 struct iface		*if_new(struct eigrpd_conf *, struct kif *);

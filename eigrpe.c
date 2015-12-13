@@ -690,3 +690,20 @@ eigrpe_nbr_ctl(struct ctl_conn *c)
 
 	imsg_compose_event(&c->iev, IMSG_CTL_END, 0, 0, -1, NULL, 0);
 }
+
+void
+eigrpe_stats_ctl(struct ctl_conn *c)
+{
+	struct eigrp		*eigrp;
+	struct ctl_stats	 sctl;
+
+	TAILQ_FOREACH(eigrp, &econf->instances, entry) {
+		sctl.af = eigrp->af;
+		sctl.as = eigrp->as;
+		memcpy(&sctl.stats, &eigrp->stats, sizeof(sctl.stats));
+		imsg_compose_event(&c->iev, IMSG_CTL_SHOW_STATS, 0,
+		    0, -1, &sctl, sizeof(struct ctl_stats));
+	}
+
+	imsg_compose_event(&c->iev, IMSG_CTL_END, 0, 0, -1, NULL, 0);
+}

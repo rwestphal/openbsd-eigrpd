@@ -278,6 +278,9 @@ control_dispatch_imsg(int fd, short event, void *bula)
 		case IMSG_CTL_SHOW_NBR:
 			eigrpe_nbr_ctl(c);
 			break;
+		case IMSG_CTL_SHOW_STATS:
+			eigrpe_stats_ctl(c);
+			break;
 		case IMSG_CTL_LOG_VERBOSE:
 			if (imsg.hdr.len != IMSG_HEADER_SIZE +
 			    sizeof(verbose))
