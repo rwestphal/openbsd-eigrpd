@@ -308,7 +308,7 @@ safe_sum_uint32(uint32_t a, uint32_t b)
 	if (total >> 32)
 		return ((uint32_t )(~0));
 
-	return (total & 0xFFFFFFFF);
+	return ((uint32_t) total);
 }
 
 uint32_t
@@ -1119,11 +1119,8 @@ rde_check_reply(struct rde_nbr *nbr, struct rinfo *ri, int siareply)
 	}
 
 	reply_outstanding_remove(reply);
-	if (!TAILQ_EMPTY(&rn->rijk))
-		/* not last reply */
-		return;
-
-	rde_last_reply(rn);
+	if (TAILQ_EMPTY(&rn->rijk))
+		rde_last_reply(rn);
 }
 
 void
