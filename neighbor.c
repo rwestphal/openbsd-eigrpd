@@ -40,17 +40,9 @@ nbr_compare(struct nbr *a, struct nbr *b)
 {
 	int		 i;
 
-	if (a->ei->eigrp->af < b->ei->eigrp->af)
-		return (-1);
-	if (a->ei->eigrp->af > b->ei->eigrp->af)
-		return (1);
 	if (a->ei->iface->ifindex < b->ei->iface->ifindex)
 		return (-1);
 	if (a->ei->iface->ifindex > b->ei->iface->ifindex)
-		return (1);
-	if (a->ei->eigrp->as < b->ei->eigrp->as)
-		return (-1);
-	if (a->ei->eigrp->as > b->ei->eigrp->as)
 		return (1);
 
 	switch (a->ei->eigrp->af) {
