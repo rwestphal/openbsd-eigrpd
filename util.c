@@ -136,7 +136,7 @@ eigrp_applymask(int af, union eigrpd_addr *dest, const union eigrpd_addr *src,
 }
 
 int
-eigrp_addrcmp(int af, union eigrpd_addr *a, union eigrpd_addr *b)
+eigrp_addrcmp(int af, const union eigrpd_addr *a, const union eigrpd_addr *b)
 {
 	switch (af) {
 	case AF_INET:
@@ -155,7 +155,7 @@ eigrp_addrcmp(int af, union eigrpd_addr *a, union eigrpd_addr *b)
 }
 
 int
-eigrp_addrisset(int af, union eigrpd_addr *addr)
+eigrp_addrisset(int af, const union eigrpd_addr *addr)
 {
 	switch (af) {
 	case AF_UNSPEC:

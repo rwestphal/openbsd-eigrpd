@@ -66,8 +66,8 @@ eigrpe_sig_handler(int sig, short event, void *bula)
 
 /* eigrp engine */
 pid_t
-eigrpe(struct eigrpd_conf *xconf, int pipe_parent2eigrpe[2], int pipe_eigrpe2rde[2],
-    int pipe_parent2rde[2])
+eigrpe(struct eigrpd_conf *xconf, int pipe_parent2eigrpe[2],
+    int pipe_eigrpe2rde[2], int pipe_parent2rde[2])
 {
 	struct passwd		*pw;
 	struct event		 ev_sigint, ev_sigterm;

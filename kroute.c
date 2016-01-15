@@ -550,7 +550,7 @@ struct kroute_node *
 kroute_insert(struct kroute *kr)
 {
 	struct kroute_prefix	*kp;
-	struct kroute_priority	*kprio, *tmp = NULL;
+	struct kroute_priority	*kprio, *tmp;
 	struct kroute_node	*kn;
 
 	kp = kroute_find_prefix(kr->af, &kr->prefix, kr->prefixlen);
