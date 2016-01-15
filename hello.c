@@ -97,6 +97,6 @@ recv_hello(struct eigrp_iface *ei, union eigrpd_addr *src, struct nbr *nbr,
 		/* send an expedited hello */
 		send_hello(ei, NULL, 0, 0);
 
-		send_update(nbr->ei, nbr, EIGRP_HDR_FLAG_INIT, 0, NULL);
+		send_update(nbr->ei, nbr, EIGRP_HDR_FLAG_INIT, NULL);
 	}
 }

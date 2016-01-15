@@ -185,7 +185,7 @@ void	 recv_hello(struct eigrp_iface *, union eigrpd_addr *, struct nbr *,
     struct tlv_parameter *);
 
 /* update.c */
-void	 send_update(struct eigrp_iface *, struct nbr *, uint32_t, int,
+void	 send_update(struct eigrp_iface *, struct nbr *, uint32_t,
     struct rinfo_head *);
 void	 recv_update(struct nbr *, struct rinfo_head *, uint32_t);
 
