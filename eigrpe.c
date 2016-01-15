@@ -545,7 +545,7 @@ eigrpe_dispatch_rde(int fd, short event, void *bula)
 				break;
 			}
 			/* announce that this neighborship is dead */
-			send_hello(nbr->ei, NULL, 0, 1);
+			send_peerterm(nbr);
 			nbr_del(nbr);
 			break;
 		case IMSG_CTL_SHOW_TOPOLOGY:

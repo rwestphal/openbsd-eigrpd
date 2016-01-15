@@ -192,7 +192,7 @@ rtp_send_mcast(struct eigrp_iface *ei, struct ibuf *buf)
 				TAILQ_INSERT_TAIL(&seq_addr_list, sa, entry);
 			}
 
-			send_hello(ei, &seq_addr_list, eigrp->seq_num, 0);
+			send_hello(ei, &seq_addr_list, eigrp->seq_num);
 			seq_addr_list_clr(&seq_addr_list);
 		}
 		send_packet(ei, NULL, flags, buf);
