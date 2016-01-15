@@ -248,20 +248,6 @@ recv_packet_nbr(struct nbr *nbr, struct eigrp_hdr *eigrp_hdr,
 	 */
 	nbr_start_timeout(nbr);
 
-	/* ack processing */
-	if (ack != 0)
-		rtp_process_ack(nbr, ack);
-	if (seq != 0) {
-		/* check for sequence wraparound */
-		if (nbr->recv_seq >= seq &&
-		   !(nbr->recv_seq == UINT32_MAX && seq == 1)) {
-			log_debug("%s: duplicate packet", __func__);
-			rtp_send_ack(nbr);
-			return (-1);
-		}
-		nbr->recv_seq = seq;
-	}
-
 	/* handle the sequence tlv */
 	if (eigrp_hdr->opcode == EIGRP_OPC_HELLO &&
 	    !TAILQ_EMPTY(seq_addr_list)) {
@@ -288,14 +274,29 @@ recv_packet_nbr(struct nbr *nbr, struct eigrp_hdr *eigrp_hdr,
 			}
 		}
 		if (tm)
-			nbr->next_mcast_seq = tm->seq;
+			nbr->next_mcast_seq = ntohl(tm->seq);
 	}
 
 	if ((ntohl(eigrp_hdr->flags) & EIGRP_HDR_FLAG_CR)) {
 		if (!(nbr->flags & F_EIGRP_NBR_CR_MODE))
 			return (-1);
+		nbr->flags &= ~F_EIGRP_NBR_CR_MODE;
 		if (ntohl(eigrp_hdr->seq_num) != nbr->next_mcast_seq)
 			return (-1);
+	}
+
+	/* ack processing */
+	if (ack != 0)
+		rtp_process_ack(nbr, ack);
+	if (seq != 0) {
+		/* check for sequence wraparound */
+		if (nbr->recv_seq >= seq &&
+		   !(nbr->recv_seq == UINT32_MAX && seq == 1)) {
+			log_debug("%s: duplicate packet", __func__);
+			rtp_send_ack(nbr);
+			return (-1);
+		}
+		nbr->recv_seq = seq;
 	}
 
 	return (0);
