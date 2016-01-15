@@ -173,8 +173,8 @@ int			 tlv_decode_seq(int, struct tlv *, char *,
     struct seq_addr_head *);
 struct tlv_sw_version	*tlv_decode_sw_version(struct tlv *, char *);
 struct tlv_mcast_seq	*tlv_decode_mcast_seq(struct tlv *, char *);
-int			 tlv_decode_route(int, enum route_type, struct tlv *,
-    char *, struct rinfo *);
+int			 tlv_decode_route(int, struct tlv *, char *,
+    struct rinfo *);
 void			 metric_encode_mtu(uint8_t *, int);
 int			 metric_decode_mtu(uint8_t *);
 
