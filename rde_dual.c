@@ -267,7 +267,10 @@ route_new(struct rt_node *rn, struct rde_nbr *nbr, struct rinfo *ri)
 
 	route->nbr = nbr;
 	route->type = ri->type;
-	memcpy(&route->nexthop, &ri->nexthop, sizeof(route->nexthop));
+	if (eigrp_addrisset(eigrp->af, &ri->nexthop))
+		memcpy(&route->nexthop, &ri->nexthop, sizeof(route->nexthop));
+	else
+		memcpy(&route->nexthop, &nbr->addr, sizeof(route->nexthop));
 	route_update_metrics(eigrp, route, ri);
 	TAILQ_INSERT_TAIL(&rn->routes, route, entry);
 
