@@ -666,8 +666,8 @@ rt_update_fib(struct rt_node *rn)
 
 			installed++;
 
-			if (route->flags & (F_EIGRP_ROUTE_INSTALLED |
-			    !F_EIGRP_ROUTE_M_CHANGED))
+			if ((route->flags & F_EIGRP_ROUTE_INSTALLED) &&
+			    !(route->flags & F_EIGRP_ROUTE_M_CHANGED))
 				continue;
 
 			rde_send_change_kroute(rn, route);
