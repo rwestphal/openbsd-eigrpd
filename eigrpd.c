@@ -227,9 +227,6 @@ main(int argc, char *argv[])
 	eigrpe_pid = eigrpe(eigrpd_conf, pipe_parent2eigrpe, pipe_eigrpe2rde,
 	    pipe_parent2rde);
 
-	/* show who we are */
-	setproctitle("parent");
-
 	event_init();
 
 	/* setup signal handler */
