@@ -171,7 +171,7 @@ main(int argc, char *argv[])
 	mib[3] = IPCTL_FORWARDING;
 	len = sizeof(ipforwarding);
 	if (sysctl(mib, 4, &ipforwarding, &len, NULL, 0) == -1)
-		err(1, "sysctl");
+		log_warn("sysctl");
 
 	if (ipforwarding != 1)
 		log_warnx("WARNING: IP forwarding NOT enabled");

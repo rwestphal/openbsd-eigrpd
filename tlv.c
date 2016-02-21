@@ -85,7 +85,7 @@ gen_sequence_tlv(struct ibuf *buf, struct seq_addr_head *seq_addr_list)
 			}
 			break;
 		default:
-			log_debug("%s: unkown address family", __func__);
+			log_debug("%s: unknown address family", __func__);
 			return (-1);
 		}
 		len += (sizeof(alen) + alen);

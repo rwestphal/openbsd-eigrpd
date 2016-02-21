@@ -713,7 +713,7 @@ find_iface(unsigned int ifindex, int af, union eigrpd_addr *src)
 {
 	struct iface	*iface;
 	struct if_addr	*if_addr;
-	uint32_t	 mask;
+	in_addr_t	 mask;
 
 	iface = if_lookup(econf, ifindex);
 	if (iface == NULL)

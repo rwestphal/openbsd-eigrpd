@@ -120,10 +120,15 @@ union eigrpd_addr {
 	struct in6_addr	v6;
 };
 
+#define IN6_IS_SCOPE_EMBED(a)   \
+	((IN6_IS_ADDR_LINKLOCAL(a)) ||  \
+	 (IN6_IS_ADDR_MC_LINKLOCAL(a)) || \
+	 (IN6_IS_ADDR_MC_INTFACELOCAL(a)))
+
 /* interface types */
 enum iface_type {
 	IF_TYPE_POINTOPOINT,
-	IF_TYPE_BROADCAST,
+	IF_TYPE_BROADCAST
 };
 
 struct if_addr {
