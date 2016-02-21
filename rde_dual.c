@@ -615,8 +615,12 @@ rt_update_fib(struct rt_node *rn)
 			return;
 
 		TAILQ_FOREACH(route, &rn->routes, entry) {
+			/* skip redistributed routes */
+			if (route->nbr->flags & F_RDE_NBR_REDIST)
+				continue;
+
 			/*
-			 * only feasible successors and the successor itself
+			 * Only feasible successors and the successor itself
 			 * are elegible to be installed.
 			 */
 			if (route->rdistance > rn->successor.fdistance)
