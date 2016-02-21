@@ -650,7 +650,7 @@ config_clear(struct eigrpd_conf *conf)
 
 	/* merge current config with an empty config */
 	xconf = malloc(sizeof(*xconf));
-	memcpy(xconf, conf, sizeof(*xconf));
+	*xconf = *conf;
 	TAILQ_INIT(&xconf->instances);
 	merge_config(conf, xconf);
 

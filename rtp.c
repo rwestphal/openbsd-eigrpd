@@ -188,7 +188,7 @@ rtp_send_mcast(struct eigrp_iface *ei, struct ibuf *buf)
 				if ((sa = calloc(1, sizeof(*sa))) == NULL)
 					fatal("rtp_send_mcast");
 				sa->af = eigrp->af;
-				memcpy(&sa->addr, &nbr->addr, sizeof(sa->addr));
+				sa->addr = nbr->addr;
 				TAILQ_INSERT_TAIL(&seq_addr_list, sa, entry);
 			}
 

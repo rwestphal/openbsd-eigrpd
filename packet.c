@@ -128,7 +128,7 @@ send_packet_v6(struct iface *iface, struct nbr *nbr, struct ibuf *buf)
 		sa6.sin6_addr = nbr->addr.v6;
 		addscope(&sa6, iface->ifindex);
 	} else
-		memcpy(&sa6.sin6_addr, &maddr, sizeof(sa6.sin6_addr));
+		sa6.sin6_addr = maddr;
 
 	/* set outgoing interface for multicast traffic */
 	if (IN6_IS_ADDR_MULTICAST(&sa6.sin6_addr))
@@ -376,7 +376,7 @@ recv_packet(int af, union eigrpd_addr *src, union eigrpd_addr *dest,
 				goto error;
 			if ((re = calloc(1, sizeof(*re))) == NULL)
 				fatal("recv_packet");
-			memcpy(&re->rinfo, &ri, sizeof(re->rinfo));
+			re->rinfo = ri;
 			TAILQ_INSERT_TAIL(&rinfo_list, re, entry);
 			break;
 		case TLV_TYPE_AUTH:

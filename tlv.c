@@ -219,7 +219,7 @@ gen_route_tlv(struct ibuf *buf, struct rinfo *ri)
 
 	/* exterior metric */
 	if (ri->type == EIGRP_ROUTE_EXTERNAL) {
-		memcpy(&emetric, &ri->emetric, sizeof(emetric));
+		emetric = ri->emetric;
 		emetric.routerid = htonl(emetric.routerid);
 		emetric.as = htonl(emetric.as);
 		emetric.tag = htonl(emetric.tag);
@@ -231,7 +231,7 @@ gen_route_tlv(struct ibuf *buf, struct rinfo *ri)
 	}
 
 	/* metric */
-	memcpy(&metric, &ri->metric, sizeof(metric));
+	metric = ri->metric;
 	metric.delay = htonl(metric.delay);
 	metric.bandwidth = htonl(metric.bandwidth);
 	if (ibuf_add(buf, &metric, sizeof(metric)))

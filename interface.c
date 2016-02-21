@@ -150,9 +150,9 @@ if_addr_new(struct iface *iface, struct kaddr *kaddr)
 		fatal("if_addr_new: calloc");
 
 	if_addr->af = kaddr->af;
-	memcpy(&if_addr->addr, &kaddr->addr, sizeof(if_addr->addr));
+	if_addr->addr = kaddr->addr;
 	if_addr->prefixlen = kaddr->prefixlen;
-	memcpy(&if_addr->dstbrd, &kaddr->dstbrd, sizeof(if_addr->dstbrd));
+	if_addr->dstbrd = kaddr->dstbrd;
 
 	TAILQ_INSERT_TAIL(&iface->addr_list, if_addr, entry);
 
@@ -493,8 +493,7 @@ if_to_ctl(struct eigrp_iface *ei)
 		ictl.prefixlen = if_primary_addr_prefixlen(ei->iface);
 		break;
 	case AF_INET6:
-		memcpy(&ictl.addr.v6, &ei->iface->linklocal,
-		    sizeof(ictl.addr.v6));
+		ictl.addr.v6 = ei->iface->linklocal;
 		ictl.prefixlen = 64;
 		break;
 	default:
