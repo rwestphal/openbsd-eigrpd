@@ -206,6 +206,10 @@ conf_main	: ROUTERID STRING {
 				YYERROR;
 			}
 			free($2);
+			if (bad_addr_v4(conf->rtr_id)) {
+				yyerror("invalid router-id");
+				YYERROR;
+			}
 		}
 		| FIBUPDATE yesno {
 			if ($2 == 0)

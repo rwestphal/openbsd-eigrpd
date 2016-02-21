@@ -466,6 +466,9 @@ int		 eigrp_addrcmp(int, const union eigrpd_addr *,
 int		 eigrp_addrisset(int, const union eigrpd_addr *);
 int		 eigrp_prefixcmp(int, const union eigrpd_addr *,
     const union eigrpd_addr *, uint8_t);
+int		 bad_addr_v4(struct in_addr);
+int		 bad_addr_v6(struct in6_addr *);
+int		 bad_addr(int, union eigrpd_addr *);
 void		 embedscope(struct sockaddr_in6 *);
 void		 recoverscope(struct sockaddr_in6 *);
 void		 addscope(struct sockaddr_in6 *, uint32_t);
