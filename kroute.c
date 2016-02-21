@@ -1398,13 +1398,14 @@ rtmsg_process(char *buf, size_t len)
 		case RTM_GET:
 		case RTM_CHANGE:
 		case RTM_DELETE:
-			if (rtm->rtm_pid == kr_state.pid)
-				continue;
-
 			if (rtm->rtm_errno)		/* failed attempts... */
 				continue;
 
 			if (rtm->rtm_tableid != kr_state.rdomain)
+				continue;
+
+			if (rtm->rtm_type == RTM_GET &&
+			    rtm->rtm_pid != kr_state.pid)
 				continue;
 
 			/* Skip ARP/ND cache and broadcast routes. */
