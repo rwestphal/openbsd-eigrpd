@@ -1277,7 +1277,7 @@ rde_nbr_new(uint32_t peerid, struct rde_nbr *new)
 	nbr->peerid = peerid;
 	nbr->ifaceid = new->ifaceid;
 	nbr->addr = new->addr;
-	nbr->ei = eigrp_iface_find_id(nbr->ifaceid);
+	nbr->ei = eigrp_if_lookup_id(nbr->ifaceid);
 	if (nbr->ei)
 		nbr->eigrp = nbr->ei->eigrp;
 	TAILQ_INIT(&nbr->rijk);

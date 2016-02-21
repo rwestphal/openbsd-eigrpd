@@ -199,7 +199,7 @@ kif_redistribute(void)
 		    sizeof(struct kif));
 		TAILQ_FOREACH(ka, &kif->addrs, entry) {
 			main_imsg_compose_eigrpe(IMSG_NEWADDR, 0, &ka->a,
-			    sizeof(struct kaddr));
+			    sizeof(ka->a));
 		}
 	}
 }
@@ -935,8 +935,7 @@ if_newaddr(unsigned short ifindex, struct sockaddr *ifa, struct sockaddr *mask,
 	TAILQ_INSERT_TAIL(&kif->addrs, ka, entry);
 
 	/* notify eigrpe about new address */
-	main_imsg_compose_eigrpe(IMSG_NEWADDR, 0, &ka->a,
-	    sizeof(struct kaddr));
+	main_imsg_compose_eigrpe(IMSG_NEWADDR, 0, &ka->a, sizeof(ka->a));
 }
 
 void
@@ -1020,7 +1019,7 @@ if_deladdr(unsigned short ifindex, struct sockaddr *ifa, struct sockaddr *mask,
 
 		/* notify eigrpe about removed address */
 		main_imsg_compose_eigrpe(IMSG_DELADDR, 0, &ka->a,
-		    sizeof(struct kaddr));
+		    sizeof(ka->a));
 		TAILQ_REMOVE(&kif->addrs, ka, entry);
 		free(ka);
 		return;
