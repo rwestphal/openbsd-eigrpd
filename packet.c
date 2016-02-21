@@ -124,11 +124,11 @@ send_packet_v6(struct iface *iface, struct nbr *nbr, struct ibuf *buf)
 	memset(&sa6, 0, sizeof(sa6));
 	sa6.sin6_family = AF_INET6;
 	sa6.sin6_len = sizeof(struct sockaddr_in6);
-	if (nbr)
+	if (nbr) {
 		sa6.sin6_addr = nbr->addr.v6;
-	else
+		addscope(&sa6, iface->ifindex);
+	} else
 		memcpy(&sa6.sin6_addr, &maddr, sizeof(sa6.sin6_addr));
-	addscope(&sa6, iface->ifindex);
 
 	/* set outgoing interface for multicast traffic */
 	if (IN6_IS_ADDR_MULTICAST(&sa6.sin6_addr))
