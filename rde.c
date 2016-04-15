@@ -407,6 +407,7 @@ rde_dispatch_parent(int fd, short event, void *bula)
 				fatal(NULL);
 			memcpy(niface, imsg.data, sizeof(struct iface));
 
+			TAILQ_INIT(&niface->ei_list);
 			TAILQ_INIT(&niface->addr_list);
 			TAILQ_INSERT_TAIL(&nconf->iface_list, niface, entry);
 			break;
