@@ -252,6 +252,21 @@ log_prefix(struct rt_node *rn)
 }
 
 const char *
+log_route_origin(int af, struct rde_nbr *nbr)
+{
+	if (nbr->flags & F_RDE_NBR_SELF) {
+		if (nbr->flags & F_RDE_NBR_REDIST)
+			return ("redistribute");
+		if (nbr->flags & F_RDE_NBR_SUMMARY)
+			return ("summary");
+		else
+			return ("connected");
+	}
+
+	return (log_addr(af, &nbr->addr));
+}
+
+const char *
 opcode_name(uint8_t opcode)
 {
 	switch (opcode) {

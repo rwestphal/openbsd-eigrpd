@@ -378,7 +378,7 @@ eigrpe_dispatch_main(int fd, short event, void *bula)
 			TAILQ_INSERT_TAIL(&neigrp->ei_list, nei, e_entry);
 			if (RB_INSERT(iface_id_head, &ifaces_by_id, nei) !=
 			    NULL)
-				fatalx("rde_dispatch_parent: "
+				fatalx("eigrpe_dispatch_main: "
 				    "RB_INSERT(ifaces_by_id) failed");
 			break;
 		case IMSG_RECONF_END:

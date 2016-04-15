@@ -1084,6 +1084,9 @@ conf_get_instance(uint16_t as)
 	}
 
 	e = calloc(1, sizeof(struct eigrp));
+	if (e == NULL)
+		fatal(NULL);
+
 	e->af = af;
 	e->as = as;
 	SIMPLEQ_INIT(&e->redist_list);

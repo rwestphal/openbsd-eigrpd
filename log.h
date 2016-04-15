@@ -37,6 +37,7 @@ const char	*log_in6addr_scope(const struct in6_addr *, unsigned int);
 const char	*log_sockaddr(void *);
 const char	*log_addr(int, union eigrpd_addr *);
 const char	*log_prefix(struct rt_node *);
+const char	*log_route_origin(int, struct rde_nbr *);
 const char	*opcode_name(uint8_t);
 const char	*af_name(int);
 const char	*if_type_name(enum iface_type);
