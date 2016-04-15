@@ -608,7 +608,7 @@ rt_update_fib(struct rt_node *rn)
 			 * Only feasible successors and the successor itself
 			 * are elegible to be installed.
 			 */
-			if (route->rdistance > rn->successor.fdistance)
+			if (route->rdistance >= rn->successor.fdistance)
 				goto uninstall;
 
 			if (route->distance >
