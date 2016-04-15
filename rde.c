@@ -146,7 +146,7 @@ rde(struct eigrpd_conf *xconf, int pipe_parent2rde[2], int pipe_eigrpe2rde[2],
 	event_add(&iev_main->ev, NULL);
 
 	gettimeofday(&now, NULL);
-	rdeconf->uptime = now.tv_sec;
+	global.uptime = now.tv_sec;
 
 	TAILQ_FOREACH(eigrp, &rdeconf->instances, entry)
 		rde_instance_init(eigrp);

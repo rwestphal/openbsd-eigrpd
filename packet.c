@@ -105,7 +105,7 @@ send_packet_v4(struct iface *iface, struct nbr *nbr, struct ibuf *buf)
 			return (-1);
 		}
 
-	if (sendmsg(econf->eigrp_socket_v4, &msg, 0) == -1) {
+	if (sendmsg(global.eigrp_socket_v4, &msg, 0) == -1) {
 		log_warn("%s: error sending packet on interface %s",
 		    __func__, iface->name);
 		return (-1);
@@ -138,7 +138,7 @@ send_packet_v6(struct iface *iface, struct nbr *nbr, struct ibuf *buf)
 			return (-1);
 		}
 
-	if (sendto(econf->eigrp_socket_v6, buf->buf, buf->wpos, 0,
+	if (sendto(global.eigrp_socket_v6, buf->buf, buf->wpos, 0,
 	    (struct sockaddr *)&sa6, sizeof(sa6)) == -1) {
 		log_warn("%s: error sending packet on interface %s",
 		    __func__, iface->name);
