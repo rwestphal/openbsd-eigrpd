@@ -433,6 +433,8 @@ struct ctl_stats {
 	struct eigrp_stats	 stats;
 };
 
+#define min(x,y) ((x) <= (y) ? (x) : (y))
+
 /* parse.y */
 struct eigrpd_conf	*parse_config(char *);
 int			 cmdline_symset(char *);

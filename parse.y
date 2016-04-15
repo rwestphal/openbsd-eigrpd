@@ -355,7 +355,7 @@ interfaceopts_l	: interfaceopts_l interfaceoptsl nl
 
 interfaceoptsl	: PASSIVE { ei->passive = 1; }
 		| SUMMARY_ADDR STRING {
-			struct summary_addr	*s;
+			struct summary_addr	*s, *tmp;
 
 			if ((s = calloc(1, sizeof(*s))) == NULL)
 				fatal(NULL);
@@ -365,8 +365,19 @@ interfaceoptsl	: PASSIVE { ei->passive = 1; }
 				free(s);
 				YYERROR;
 			}
-
 			free($2);
+
+			TAILQ_FOREACH(tmp, &ei->summary_list, entry) {
+				if (eigrp_prefixcmp(af, &s->prefix,
+				    &tmp->prefix, min(s->prefixlen,
+				    tmp->prefixlen)) == 0) {
+					yyerror("summary-address conflicts "
+					    "with another summary-address "
+					    "already configured");
+					YYERROR;
+				}
+			}
+
 			TAILQ_INSERT_TAIL(&ei->summary_list, s, entry);
 		}
 		| iface_defaults

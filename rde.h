@@ -26,8 +26,6 @@
 #include <event.h>
 #include <limits.h>
 
-#define min(x,y) ((x) <= (y) ? (x) : (y))
-
 /* just the info RDE needs */
 struct rde_nbr {
 	RB_ENTRY(rde_nbr)	 entry;
