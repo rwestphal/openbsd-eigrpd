@@ -406,9 +406,8 @@ main_dispatch_eigrpe(int fd, short event, void *bula)
 	if (!shut)
 		imsg_event_add(iev);
 	else {
-		/* this pipe is dead, so remove the event handler */
-		event_del(&iev->ev);
-		event_loopexit(NULL);
+		eigrpe_pid = 0;
+		eigrpd_shutdown();
 	}
 }
 
@@ -470,9 +469,8 @@ main_dispatch_rde(int fd, short event, void *bula)
 	if (!shut)
 		imsg_event_add(iev);
 	else {
-		/* this pipe is dead, so remove the event handler */
-		event_del(&iev->ev);
-		event_loopexit(NULL);
+		rde_pid = 0;
+		eigrpd_shutdown();
 	}
 }
 
