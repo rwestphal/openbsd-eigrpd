@@ -323,6 +323,7 @@ eigrpe_dispatch_main(int fd, short event, void *bula)
 			    &ka->addr.v6)) {
 				memset(&iface->linklocal, 0,
 				    sizeof(iface->linklocal));
+				if_update(iface, AF_INET6);
 				break;
 			}
 
