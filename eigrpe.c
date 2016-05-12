@@ -244,7 +244,7 @@ eigrpe_imsg_compose_rde(int type, uint32_t peerid, pid_t pid,
 void
 eigrpe_dispatch_main(int fd, short event, void *bula)
 {
-	struct iface		*niface = NULL;
+	static struct iface	*niface = NULL;
 	static struct eigrp	*neigrp;
 	struct eigrp_iface	*nei;
 	struct imsg		 imsg;
