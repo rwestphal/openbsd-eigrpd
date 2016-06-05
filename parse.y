@@ -951,8 +951,7 @@ parse_config(char *filename)
 {
 	struct sym	*sym, *next;
 
-	if ((conf = calloc(1, sizeof(struct eigrpd_conf))) == NULL)
-		fatal("parse_config");
+	conf = config_new_empty();
 	conf->rdomain = 0;
 	conf->fib_priority_internal = RTP_EIGRP;
 	conf->fib_priority_external = RTP_EIGRP;
@@ -976,9 +975,6 @@ parse_config(char *filename)
 		return (NULL);
 	}
 	topfile = file;
-
-	TAILQ_INIT(&conf->iface_list);
-	TAILQ_INIT(&conf->instances);
 
 	yyparse();
 	errors = file->errors;
