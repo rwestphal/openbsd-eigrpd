@@ -278,7 +278,6 @@ eigrp_if_new(struct eigrpd_conf *xconf, struct eigrp *eigrp, struct kif *kif)
 {
 	struct iface		*iface;
 	struct eigrp_iface	*ei;
-	struct timeval		 now;
 
 	iface = if_lookup(xconf, kif->ifindex);
 	if (iface == NULL)
@@ -296,9 +295,6 @@ eigrp_if_new(struct eigrpd_conf *xconf, struct eigrp *eigrp, struct kif *kif)
 	ei->iface = iface;
 	if (ei->iface->flags & IFF_LOOPBACK)
 		ei->passive = 1;
-
-	gettimeofday(&now, NULL);
-	ei->uptime = now.tv_sec;
 
 	TAILQ_INIT(&ei->nbr_list);
 	TAILQ_INIT(&ei->update_list);
@@ -361,6 +357,7 @@ void
 eigrp_if_start(struct eigrp_iface *ei)
 {
 	struct eigrp		*eigrp = ei->eigrp;
+	struct timeval		 now;
 	struct if_addr		*if_addr;
 	union eigrpd_addr	 addr;
 	struct in_addr		 addr4;
@@ -368,6 +365,9 @@ eigrp_if_start(struct eigrp_iface *ei)
 
 	log_debug("%s: %s as %u family %s", __func__, ei->iface->name,
 	    eigrp->as, af_name(eigrp->af));
+
+	gettimeofday(&now, NULL);
+	ei->uptime = now.tv_sec;
 
 	/* init the dummy self neighbor */
 	memset(&addr, 0, sizeof(addr));
