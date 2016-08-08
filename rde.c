@@ -142,7 +142,7 @@ rde_shutdown(void)
 	free(iev_main);
 
 	log_info("route decision engine exiting");
-	_exit(0);
+	exit(0);
 }
 
 int

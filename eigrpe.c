@@ -195,7 +195,7 @@ eigrpe_shutdown(void)
 	free(pkt_ptr);
 
 	log_info("eigrp engine exiting");
-	_exit(0);
+	exit(0);
 }
 
 /* imesg */
