@@ -74,7 +74,7 @@ RB_PROTOTYPE(nbr_pid_head, nbr, pid_tree, nbr_pid_compare)
 extern struct eigrpd_conf        *econf;
 
 /* eigrpe.c */
-pid_t		 eigrpe(int, int, char *);
+void		 eigrpe(int, int, char *);
 int		 eigrpe_imsg_compose_parent(int, pid_t, void *, uint16_t);
 int		 eigrpe_imsg_compose_rde(int, uint32_t, pid_t, void *,
 		    uint16_t);

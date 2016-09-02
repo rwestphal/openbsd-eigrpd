@@ -299,13 +299,15 @@ tlv_decode_seq(int af, struct tlv *tlv, char *buf,
 		switch (af) {
 		case AF_INET:
 			if (alen != INADDRSZ) {
-				log_debug("%s: invalid address length", __func__);
+				log_debug("%s: invalid address length",
+				    __func__);
 				return (-1);
 			}
 			break;
 		case AF_INET6:
 			if (alen != IN6ADDRSZ) {
-				log_debug("%s: invalid address length", __func__);
+				log_debug("%s: invalid address length",
+				    __func__);
 				return (-1);
 			}
 			break;

@@ -126,7 +126,7 @@ extern struct eigrpd_conf	*rdeconf;
 extern struct rde_nbr_head	 rde_nbrs;
 
 /* rde.c */
-pid_t		 rde(int, int);
+void		 rde(int, int);
 int		 rde_imsg_compose_parent(int, pid_t, void *, uint16_t);
 int		 rde_imsg_compose_eigrpe(int, uint32_t, pid_t, void *,
 		    uint16_t);

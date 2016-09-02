@@ -69,7 +69,7 @@ rde_sig_handler(int sig, short event, void *arg)
 }
 
 /* route decision engine */
-pid_t
+void
 rde(int debug, int verbose)
 {
 	struct event		 ev_sigint, ev_sigterm;
@@ -126,9 +126,6 @@ rde(int debug, int verbose)
 	event_dispatch();
 
 	rde_shutdown();
-	/* NOTREACHED */
-
-	return (0);
 }
 
 static __dead void

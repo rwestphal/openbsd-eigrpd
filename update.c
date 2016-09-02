@@ -39,7 +39,6 @@ send_update(struct eigrp_iface *ei, struct nbr *nbr, uint32_t flags,
 	int			 size;
 	int			 route_len;
 
-	/* don't exceed the interface's mtu */
 	do {
 		if ((buf = ibuf_dynamic(PKG_DEF_SIZE,
 		    IP_MAXPACKET - sizeof(struct ip))) == NULL)
@@ -67,6 +66,7 @@ send_update(struct eigrp_iface *ei, struct nbr *nbr, uint32_t flags,
 
 		while ((re = TAILQ_FIRST(rinfo_list)) != NULL) {
 			route_len = len_route_tlv(&re->rinfo);
+			/* don't exceed the MTU to avoid IP fragmentation */
 			if (size + route_len > ei->iface->mtu) {
 				rtp_send(ei, nbr, buf);
 				break;

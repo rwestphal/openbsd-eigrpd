@@ -64,7 +64,7 @@ eigrpe_sig_handler(int sig, short event, void *bula)
 }
 
 /* eigrp engine */
-pid_t
+void
 eigrpe(int debug, int verbose, char *sockname)
 {
 	struct passwd		*pw;
@@ -173,8 +173,6 @@ eigrpe(int debug, int verbose, char *sockname)
 	event_dispatch();
 
 	eigrpe_shutdown();
-	/* NOTREACHED */
-	return (0);
 }
 
 static __dead void

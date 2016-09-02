@@ -311,9 +311,9 @@ if_type_name(enum iface_type type)
 		return ("POINTOPOINT");
 	case IF_TYPE_BROADCAST:
 		return ("BROADCAST");
+	default:
+		return ("UNKNOWN");
 	}
-	/* NOTREACHED */
-	return ("UNKNOWN");
 }
 
 const char *
