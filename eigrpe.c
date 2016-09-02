@@ -130,6 +130,9 @@ eigrpe(int debug, int verbose, char *sockname)
 	    setresuid(pw->pw_uid, pw->pw_uid, pw->pw_uid))
 		fatal("can't drop privileges");
 
+	if (pledge("stdio cpath inet mcast recvfd", NULL) == -1)
+		fatal("pledge");
+
 	event_init();
 
 	/* setup signal handler */
@@ -164,9 +167,6 @@ eigrpe(int debug, int verbose, char *sockname)
 
 	if ((pkt_ptr = calloc(1, READ_BUF_SIZE)) == NULL)
 		fatal("eigrpe");
-
-	if (pledge("stdio cpath inet mcast recvfd", NULL) == -1)
-		fatal("pledge");
 
 	event_dispatch();
 
