@@ -26,12 +26,9 @@
 #define IPPROTO_EIGRP		88
 #define EIGRP_IP_TTL		2
 
-/* 224.0.0.10 */
-#define AllEIGRPRouters_v4	0xa0000e0 /* network byte order */
-/* ff02::a */
-#define AllEIGRPRouters_v6 \
-	{{{ 0xff, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, \
-	    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a }}}
+/* EIGRP multicast group addresses */
+#define AllEIGRPRouters_v4		"224.0.0.10"
+#define AllEIGRPRouters_v6		"ff02::a"
 
 #define EIGRP_INFINITE_METRIC	((uint32_t )(~0))
 

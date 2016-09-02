@@ -325,6 +325,8 @@ struct eigrpd_global {
 	time_t			 uptime;
 	int			 eigrp_socket_v4;
 	int			 eigrp_socket_v6;
+	struct in_addr		 mcast_addr_v4;
+	struct in6_addr		 mcast_addr_v6;
 	char			*csock;
 };
 

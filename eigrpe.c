@@ -83,6 +83,11 @@ eigrpe(int debug, int verbose, char *sockname)
 	if (control_init(global.csock) == -1)
 		fatalx("control socket setup failed");
 
+	if (inet_pton(AF_INET, AllEIGRPRouters_v4, &global.mcast_addr_v4) != 1)
+		fatal("inet_pton");
+	if (inet_pton(AF_INET6, AllEIGRPRouters_v6, &global.mcast_addr_v6) != 1)
+		fatal("inet_pton");
+
 	/* create the raw ipv4 socket */
 	if ((global.eigrp_socket_v4 = socket(AF_INET,
 	    SOCK_RAW | SOCK_CLOEXEC | SOCK_NONBLOCK, IPPROTO_EIGRP)) == -1)
