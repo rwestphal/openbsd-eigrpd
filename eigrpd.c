@@ -111,6 +111,7 @@ main(int argc, char *argv[])
 
 	conffile = CONF_FILE;
 	eigrpd_process = PROC_MAIN;
+	log_procname = log_procnames[eigrpd_process];
 	sockname = EIGRPD_SOCKET;
 
 	log_init(1);	/* log to stderr until daemonized */

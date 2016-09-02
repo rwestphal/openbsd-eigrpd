@@ -126,6 +126,7 @@ eigrpe(int debug, int verbose, char *sockname)
 
 	setproctitle("eigrp engine");
 	eigrpd_process = PROC_EIGRP_ENGINE;
+	log_procname = log_procnames[eigrpd_process];
 
 	if (setgroups(1, &pw->pw_gid) ||
 	    setresgid(pw->pw_gid, pw->pw_gid, pw->pw_gid) ||
