@@ -27,8 +27,6 @@
 #include "eigrpe.h"
 #include "log.h"
 
-extern struct eigrpd_conf	*econf;
-
 /* update packet handling */
 
 void
