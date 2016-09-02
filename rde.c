@@ -40,7 +40,7 @@ __dead void	 rde_shutdown(void);
 void		 rde_dispatch_imsg(int, short, void *);
 void		 rde_dispatch_parent(int, short, void *);
 
-struct eigrpd_conf	*rdeconf = NULL, *nconf;
+struct eigrpd_conf	*rdeconf;
 struct imsgev		*iev_eigrpe;
 struct imsgev		*iev_main;
 
@@ -304,7 +304,8 @@ rde_dispatch_imsg(int fd, short event, void *bula)
 void
 rde_dispatch_parent(int fd, short event, void *bula)
 {
-	static struct iface	*niface = NULL;
+	static struct eigrpd_conf *nconf;
+	static struct iface	*niface;
 	static struct eigrp	*neigrp;
 	struct eigrp_iface	*nei;
 	struct imsg		 imsg;

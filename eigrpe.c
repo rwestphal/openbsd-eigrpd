@@ -42,7 +42,7 @@ __dead void	 eigrpe_shutdown(void);
 
 static struct event	 ev4;
 static struct event	 ev6;
-struct eigrpd_conf	*econf = NULL, *nconf;
+struct eigrpd_conf	*econf;
 struct imsgev		*iev_main;
 struct imsgev		*iev_rde;
 
@@ -227,7 +227,8 @@ eigrpe_imsg_compose_rde(int type, uint32_t peerid, pid_t pid,
 void
 eigrpe_dispatch_main(int fd, short event, void *bula)
 {
-	static struct iface	*niface = NULL;
+	static struct eigrpd_conf *nconf;
+	static struct iface	*niface;
 	static struct eigrp	*neigrp;
 	struct eigrp_iface	*nei;
 	struct imsg		 imsg;

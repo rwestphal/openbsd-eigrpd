@@ -50,8 +50,6 @@ RB_GENERATE(iface_id_head, eigrp_iface, id_tree, iface_id_compare)
 
 struct iface_id_head ifaces_by_id = RB_INITIALIZER(&ifaces_by_id);
 
-static uint32_t	ifacecnt = 1;
-
 struct iface *
 if_new(struct eigrpd_conf *xconf, struct kif *kif)
 {
@@ -294,6 +292,7 @@ eigrp_if_new(struct eigrpd_conf *xconf, struct eigrp *eigrp, struct kif *kif)
 {
 	struct iface		*iface;
 	struct eigrp_iface	*ei;
+	static uint32_t		 ifacecnt = 1;
 
 	iface = if_lookup(xconf, kif->ifindex);
 	if (iface == NULL)

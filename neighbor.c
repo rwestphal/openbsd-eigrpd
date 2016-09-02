@@ -53,8 +53,6 @@ nbr_pid_compare(struct nbr *a, struct nbr *b)
 
 struct nbr_pid_head nbrs_by_pid = RB_INITIALIZER(&nbrs_by_pid);
 
-uint32_t	peercnt = NBR_CNTSTART;
-
 extern struct eigrpd_conf	*econf;
 
 struct nbr *
@@ -150,6 +148,8 @@ nbr_del(struct nbr *nbr)
 void
 nbr_update_peerid(struct nbr *nbr)
 {
+	static uint32_t	 peercnt = NBR_CNTSTART;
+
 	if (nbr->peerid)
 		RB_REMOVE(nbr_pid_head, &nbrs_by_pid, nbr);
 
