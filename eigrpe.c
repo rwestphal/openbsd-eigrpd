@@ -159,11 +159,11 @@ eigrpe(int debug, int verbose, char *sockname)
 	event_add(&iev_main->ev, NULL);
 
 	event_set(&ev4, global.eigrp_socket_v4, EV_READ|EV_PERSIST,
-	    recv_packet_v4, econf);
+	    recv_packet, econf);
 	event_add(&ev4, NULL);
 
 	event_set(&ev6, global.eigrp_socket_v6, EV_READ|EV_PERSIST,
-	    recv_packet_v6, econf);
+	    recv_packet, econf);
 	event_add(&ev6, NULL);
 
 	/* listen on eigrpd control socket */
