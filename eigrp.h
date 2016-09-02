@@ -21,9 +21,6 @@
 #ifndef _EIGRP_H_
 #define _EIGRP_H_
 
-#include <netinet/in.h>
-#include <stddef.h>
-
 /* misc */
 #define EIGRP_VERSION		2
 #define IPPROTO_EIGRP		88

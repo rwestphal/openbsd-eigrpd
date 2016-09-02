@@ -19,19 +19,21 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <arpa/inet.h>
-#include <errno.h>
-#include <signal.h>
-#include <string.h>
-#include <pwd.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <net/route.h>
 
-#include "eigrp.h"
+#include <errno.h>
+#include <pwd.h>
+#include <signal.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
 #include "eigrpd.h"
 #include "eigrpe.h"
-#include "log.h"
 #include "rde.h"
+#include "log.h"
 
 void		 rde_sig_handler(int sig, short, void *);
 __dead void	 rde_shutdown(void);

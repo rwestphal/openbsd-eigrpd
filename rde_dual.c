@@ -16,15 +16,15 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#include <sys/types.h>
+
 #include <stdlib.h>
 #include <string.h>
-#include <arpa/inet.h>
 
-#include "eigrp.h"
 #include "eigrpd.h"
 #include "eigrpe.h"
-#include "log.h"
 #include "rde.h"
+#include "log.h"
 
 void	reply_active_timer(int, short, void *);
 void	reply_active_start_timer(struct reply_node *);

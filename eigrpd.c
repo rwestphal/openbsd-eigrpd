@@ -19,24 +19,23 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/sysctl.h>
-#include <arpa/inet.h>
+
 #include <err.h>
 #include <errno.h>
 #include <pwd.h>
-#include <string.h>
 #include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 
 #include "eigrpd.h"
-#include "eigrp.h"
 #include "eigrpe.h"
-#include "control.h"
-#include "log.h"
 #include "rde.h"
+#include "log.h"
 
 void		main_sig_handler(int, short, void *);
 __dead void	usage(void);

@@ -16,13 +16,12 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <sys/socket.h>
-#include <arpa/inet.h>
+#include <sys/types.h>
+
 #include <string.h>
+#include <stdlib.h>
 
 #include "eigrpd.h"
-#include "eigrp.h"
 #include "eigrpe.h"
 #include "rde.h"
 #include "log.h"

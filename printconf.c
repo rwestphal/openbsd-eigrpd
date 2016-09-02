@@ -16,12 +16,12 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include <stdio.h>
-#include <arpa/inet.h>
+#include <sys/types.h>
 
-#include "eigrp.h"
+#include <arpa/inet.h>
+#include <stdio.h>
+
 #include "eigrpd.h"
-#include "eigrpe.h"
 #include "log.h"
 
 void	print_mainconf(struct eigrpd_conf *);

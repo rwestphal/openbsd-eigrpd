@@ -16,14 +16,14 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+#include <sys/types.h>
+#include <netinet/in.h>
+#include <netinet/ip.h>
+
 #include <stdlib.h>
-#include <string.h>
-#include <arpa/inet.h>
 
 #include "eigrpd.h"
-#include "eigrp.h"
 #include "eigrpe.h"
-#include "rde.h"
 #include "log.h"
 
 void		 rtp_retrans_timer(int, short, void *);

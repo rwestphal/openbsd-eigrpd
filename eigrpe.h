@@ -20,10 +20,10 @@
 #ifndef _EIGRPE_H_
 #define _EIGRPE_H_
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <netinet/ip.h>
+#include <sys/queue.h>
+#include <sys/tree.h>
+
+#include <event.h>
 
 TAILQ_HEAD(ctl_conns, ctl_conn)	ctl_conns;
 

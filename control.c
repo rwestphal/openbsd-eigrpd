@@ -19,17 +19,16 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/un.h>
+
 #include <errno.h>
-#include <fcntl.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 
 #include "eigrpd.h"
-#include "eigrp.h"
 #include "eigrpe.h"
-#include "log.h"
 #include "control.h"
+#include "log.h"
 
 #define	CONTROL_BACKLOG	5
 

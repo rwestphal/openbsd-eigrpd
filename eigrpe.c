@@ -19,21 +19,23 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <arpa/inet.h>
-#include <signal.h>
-#include <string.h>
-#include <fcntl.h>
-#include <pwd.h>
-#include <unistd.h>
-#include <errno.h>
+#include <sys/types.h>
+#include <netinet/in.h>
+#include <netinet/ip.h>
 
-#include "eigrp.h"
+#include <arpa/inet.h>
+#include <errno.h>
+#include <pwd.h>
+#include <signal.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
 #include "eigrpd.h"
 #include "eigrpe.h"
 #include "rde.h"
-#include "control.h"
 #include "log.h"
+#include "control.h"
 
 void		 eigrpe_sig_handler(int, short, void *);
 __dead void	 eigrpe_shutdown(void);

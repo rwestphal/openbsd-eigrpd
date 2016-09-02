@@ -17,17 +17,20 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <arpa/inet.h>
+#include <sys/types.h>
 #include <net/if_dl.h>
+#include <netinet/in.h>
+#include <netinet/ip.h>
+
+#include <arpa/inet.h>
 #include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "eigrpd.h"
-#include "eigrp.h"
-#include "log.h"
 #include "eigrpe.h"
+#include "log.h"
 
 extern struct eigrpd_conf	*econf;
 

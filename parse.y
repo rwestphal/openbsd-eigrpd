@@ -26,20 +26,17 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
-#include <netinet/in.h>
+#include <net/route.h>
+
 #include <arpa/inet.h>
 #include <ctype.h>
 #include <err.h>
-#include <errno.h>
-#include <unistd.h>
 #include <ifaddrs.h>
 #include <limits.h>
-#include <stdarg.h>
 #include <stdio.h>
-#include <string.h>
 #include <syslog.h>
+#include <unistd.h>
 
-#include "eigrp.h"
 #include "eigrpd.h"
 #include "eigrpe.h"
 #include "log.h"

@@ -20,7 +20,7 @@
 #define	_CONTROL_H_
 
 #include <sys/queue.h>
-#include <sys/time.h>
+
 #include <event.h>
 
 struct {

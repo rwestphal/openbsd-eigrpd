@@ -16,17 +16,16 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <inttypes.h>
-#include <string.h>
-#include <sys/uio.h>
+#include <sys/types.h>
 #include <sys/utsname.h>
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "eigrpd.h"
-#include "eigrp.h"
-#include "log.h"
 #include "eigrpe.h"
+#include "log.h"
 
 int
 gen_parameter_tlv(struct ibuf *buf, struct eigrp_iface *ei, int peerterm)
